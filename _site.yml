@@ -1,0 +1,11 @@
+name: "statroyale-website"
+navbar:
+  title: "stattleroyale.com"
+  left:
+    - text: "Home"
+      href: index.html  
+    - text: "Analysis: Aggression games"
+      href: AggressionGames.html  
+output:
+  html_document:
+    theme: cerulean
