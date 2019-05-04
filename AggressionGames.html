@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Game management during the World Cup Qualifiers: a data-based argument for ‘aggression games’ over ’throwaway games</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">stattleroyale.com</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="AggressionGames.html">Analysis: Aggression games</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Game management during the World Cup Qualifiers: a data-based argument for ‘aggression games’ over ’throwaway games</h1>
+
+</div>
+
+
+<p>03MAY2019</p>
+<p><br></p>
+<p><br/></p>
+<header>
+<section id="motivation" class="level1">
+<h1>Motivation</h1>
+<p style="text-align: justify;">
+During last Sunday’s NA-East Fortnite World Cup qualifier, there were 2915 players who queued up in at least one match; however, only 2424 (83%) finished all 10. Some of this can be explained by delayed starts, rage quitting when it was clear a top 6 finish was not happening, or staying in the lobby for extended periods of time while you wait for that guy you met one time at a LAN to finish his match so you can queue up at the same time.
+</p>
+<p style="text-align: justify;">
+Perhaps the most interesting reason, however, is that players were running out of time.
+</p>
+<p style="text-align: justify;">
+It’s been discussed before, but it is worth restating that it is mathematically impossible to play optimal Fortnite and queue all 10 games. Across 279 matches that occurred during the 3-hour window last Sunday, the average game length was just under 24 minutes. The shortest was around 22.5 minutes and the longest was 24.5 minutes. If you played perfectly and won every match, you would only have time to complete 7 matches and queue up for an 8th before 180 minutes elapsed. While no one is expected to play perfect or win 7 matches, a quick look at past leaderboards indicates top players are not completing all their matches. Only 77% (156/200) finished all 10 of their matches among the top 200 players.
+</p>
+<br> <br/>
+<hr>
+<hr/>
+</section>
+<section id="an-overview-of-the-current-meta-for-game-management" class="level1">
+<h1>An overview of the current meta for game management</h1>
+<p style="text-align: justify;">
+A popular meta for solos game management seems to be to play your matches as normal for the first 150 minutes and then evaluate how to proceed for the last 30 minutes. If there is not enough time to queue for all remaining matches, the player will play “throwaway games” where they land at Tilted, attempt to get a few eliminations before dying, and then return to the lobby to get into a new match. From an outside perspective, this seems overly conservative in a setting where only the very top of the leaderboard qualifies. Is there a more optimal way to manage games?
+</p>
+<p style="text-align: justify;">
+As a statistician, I find this to be a really interesting game theory question. After several days of thinking about it, I finally decided to look into the data and perform a few analyses. I found some of my findings interesting and wanted to share with others who likely share a similar interest.
+</p>
+<br> <br/>
+<hr>
+<hr/>
+</section>
+<section id="methods-and-results" class="level1">
+<h1>Methods and Results</h1>
+<p style="text-align: justify;">
+The first figure illustrates the estimated probability of experiencing a “time crunch” based on your final rank. This ‘time crunch’ metric was defined as having 2 or more non-started games with less than 25 minutes left. Under this scenario, it would be nearly impossible to play the entirety of one match and still manage to queue in time for another match. Among players that finished in the top 200, 56% had not yet begun their 9th match with less than 25 minutes remaining.
+</p>
+<center>
+<img src="https://i.imgur.com/lHk4O99.png" alt="Figure 1: Estimated probability of having a time constraint in finishing games (Fortnite World Cup Week 3 − Solos − NAE)" width=400 height=400,align="middle">
+</center>
+<p><br> <br/></p>
+The second figure was a series of histograms to show the distribution of elimination times in each match for the top 500 overall players. Three things jump out: (1) There was a bimodal distribution in most matches where players tend to be eliminated near the beginning of the match or near the end. (2) The distributions were noticeably different in Games 8 and 9 as more players were eliminated early. (3) A player’s last match was typically their most sweaty.
+</p>
+<center>
+<img src="https://i.imgur.com/nMLPZ1G.png" alt="Figure 2: Distribution of elimination times by match among top 500 players (Fortnite World Cup Week 3 − Solos − NAE)" width=400 height=400,align="middle">
+</center>
+<br> <br/>
+<p style="text-align: justify;">
+Next, I calculated the expected number of points for players under a time crunch versus those that were not. Among players in the top 500 after 8 matches, the average point totals for games 9 and 10 was 0.6 higher for non-time crunch players (mean=4.5; sd=4.8) compared to time crunch players: (mean=3.9; sd=4.1). While this difference was not statistically significant, it does suggest that players not under a time crunch scored more points in their last few games.
+</p>
+<p style="text-align: justify;">
+The third figure is a scatter plot of the timing of starting a match versus a player’s ranking. Each dot represents a unique player-match. The dots were colored red to denote games where a player scored 15+ points. I also estimated (using a non-parametric loess smoother) the average player ranking at all time points in the 3-hour window; these estimates were indicated by the dark green line.
+</p>
+<center>
+<img src="https://i.imgur.com/KEukDJr.png" alt="Figure 3: Average player ranking (green line) by start time (Fortnite World Cup Week 3 − Solos − NAE)" width=400 height=400,align="middle">
+</center>
+<p><br> <br/></p>
+<p style="text-align: justify;">
+The quality of players in a game increased substantially as one gets nearer to the end of the 3-hour window. However, there was a slight bump that corresponds to the first 15 minutes or so when players were eliminated from their first match and queue up for a second match.
+</p>
+<br> <br/>
+<hr>
+<hr/>
+</section>
+<section id="key-points" class="level1">
+<h1>Key points</h1>
+<p style="text-align: justify;">
+<ol>
+<li>
+If you anticipate finishing in the top 200 or higher, it is more likely than not that you will have 2+ games remaining but only enough time to fully complete one.
+</li>
+<li>
+On average, players with more than 25 minutes remaining when they start game 9 scored more points in games 9/10 than players who start Game 9 with less than 25 minutes remaining.
+</li>
+<li>
+Player lobbies in games 9 and 10 are difficult. When you decide to ‘throw away’ game 8 or 9, you are likely going against similarly talented players. It is unlikely that you will score many points with this strategy.
+</li>
+<li>
+Players not under a time crunch are able to take advantage of other players ‘throwing away’ a game by playing the game out in lobbies with fewer players left for end game. This increases the probability for placement points.
+</li>
+<li>
+Lobbies at the beginning of the 3-hour window are considerably weaker. These games provide some of the best opportunities for high score games that may be needed for qualification. See the final figure for a nifty visualization of point distributions.
+</li>
+</ol>
+</p>
+<center>
+<img src="https://i.imgur.com/3SwRmtO.png" alt="Figure 4: Distribution of points per match (Fortnite World Cup Week 3 − Solos − NAE)" width=500 height=500,align="middle">
+</center>
+<br> <br/>
+<hr>
+<hr/>
+</section>
+<section id="recommendation-aggression-games" class="level1">
+<h1>Recommendation: Aggression Game(s)</h1>
+<p style="text-align: justify;">
+Taking all of this into consideration, I think elite players whose goal is World Cup qualification should consider implementing what I refer to as “aggression games” in their earlier games.
+</p>
+<p style="text-align: justify;">
+In an aggression game, a player plays more aggressive (but not reckless) in seeking game advantages (e.g., eliminations against likely weaker opponents or contested loot/ballers/etc.). In addition to elimination points, this strategy theoretically would provide additional loot, health, and mobility that may lead to greater opportunities in end game. If successfully implemented over several early games, this could snowball into multiple opportunities for additional points. If the aggression game is unsuccessful, the most likely consequence (assuming you are an elite player that expects to finish near the top 200), is the loss of a 1-2 point throwaway game.
+</p>
+<br> <br/>
+<hr>
+<hr/>
+</section>
+<section id="final-thoughts" class="level1">
+<h1>Final thoughts</h1>
+<p style="text-align: justify;">
+Having said all of this, I acknowledge Fortnite is not played in a vacuum. There may be downsides to aggression games that are difficult to measure, including a lack of comfort with aggressive play style, lack of momentum, or concern about losing a safety net. Furthermore, numerous talented players have qualified the last few weeks even though they did not complete all of their games. Still, I would encourage players to evaluate their current risk tolerance regarding game management and consider implementing a slightly more aggressive approach.
+</p>
+<hr>
+<hr/>
+<p><strong>TL;DR: Moneyball for Fortnite World Cup Qualifiers. Players should take advantage of weaker lobbies at the beginning of tournaments rather than inevitably waste a game at the end of the tournament.</strong></p>
+<p><br> <br/> <br> <br/> <br> <br/> [1] “First published: 03 May 2019 (21:46)”</p>
+<p>[1] “Last updated: 03 May 2019 (21:46)”</p>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92123517-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<meta name="description" content=“This website provides data analysis findings and visualizations regarding the 2019 Fortnite World Cup”  />
+</section>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
